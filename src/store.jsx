@@ -43,7 +43,7 @@ console.log(store);
 console.log('initial State', store.getState());
 
 // Step 4: Dispatch an action to add a task
-store.dispatch({ type: ADD_TASK, payload: 'Sabbir' });
+store.dispatch(addTask("Sabbir"));
 console.log('Update State', store.getState());
 
 store.dispatch({ type: ADD_TASK, payload: 'Buy Mango' });
@@ -51,3 +51,12 @@ console.log('Update State', store.getState());
 
 store.dispatch({ type: DELETE_TASK, payload: 0 });
 console.log('deleted State', store.getState());
+
+// Step 4: Dispatch an action to add a task
+const addTask = (data) => {
+  return { type: ADD_TASK, payload: data };
+};
+
+const deleteTask = (id) => {
+  return{ type: DELETE_TASK, payload: id };
+}
