@@ -35,12 +35,22 @@ const taskReducer = (state = initialState, action) => {
 };
 
 // step 2: Log the initial state
-const store = createStore(taskReducer);
+export const store = createStore(taskReducer);
 console.log(store);
 
 // Step 3: Log the initial state
 // The getState method is a synchronous function that returns the current state of a Readux application. It include  the entire state of the application, including all the reducers and their respective states.
 console.log('initial State', store.getState());
+
+// Step 4: Dispatch an action to add a task
+const addTask = (data) => {
+  return { type: ADD_TASK, payload: data };
+};
+
+// eslint-disable-next-line no-unused-vars
+const deleteTask = (id) => {
+  return{ type: DELETE_TASK, payload: id };
+} 
 
 // Step 4: Dispatch an action to add a task
 store.dispatch(addTask("Sabbir"));
@@ -52,11 +62,3 @@ console.log('Update State', store.getState());
 store.dispatch({ type: DELETE_TASK, payload: 0 });
 console.log('deleted State', store.getState());
 
-// Step 4: Dispatch an action to add a task
-const addTask = (data) => {
-  return { type: ADD_TASK, payload: data };
-};
-
-const deleteTask = (id) => {
-  return{ type: DELETE_TASK, payload: id };
-}
