@@ -53,7 +53,10 @@ const deleteTask = (id) => {
 } 
 
 // Step 4: Dispatch an action to add a task
-store.dispatch(addTask("Sabbir"));
+store.dispatch(addTask("Buy TT code"));
+store.dispatch(addTask("Buy apple"));
+store.dispatch(addTask("Buy banana"));
+
 console.log('Update State', store.getState());
 
 store.dispatch({ type: ADD_TASK, payload: 'Buy Mango' });
