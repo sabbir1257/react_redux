@@ -43,12 +43,12 @@ console.log(store);
 console.log('initial State', store.getState());
 
 // Step 4: Dispatch an action to add a task
-const addTask = (data) => {
+export const addTask = (data) => {
   return { type: ADD_TASK, payload: data };
 };
 
 // eslint-disable-next-line no-unused-vars
-const deleteTask = (id) => {
+export const deleteTask = (id) => {
   return{ type: DELETE_TASK, payload: id };
 } 
 

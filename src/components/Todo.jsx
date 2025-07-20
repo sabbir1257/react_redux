@@ -1,9 +1,21 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { MdDeleteForever } from 'react-icons/md';
+import { useState } from 'react';
+import { addTask } from '../store';
 
 const Todo = () => {
+  const [task, setTask] = useState('');
+
   const tasks = useSelector((state) => state.task);
   // console.log("react states", state.task)
+
+  const dispatch = useDispatch();
+
+  // handle form submission
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    return dispatch(addTask(task));
+  };
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-black to-gray-900">
@@ -11,11 +23,16 @@ const Todo = () => {
         <h1 className="text-3xl font-bold text-purple-900 mb-6">To-do List:</h1>
 
         {/* Input Box */}
-        <div className="flex items-center space-x-4 bg-white rounded-full p-2 shadow-inner">
+        <form
+          onSubmit={handleFormSubmit}
+          className="flex items-center space-x-4 bg-white rounded-full p-2 shadow-inner"
+        >
           <input
             type="text"
             placeholder="Add a new task"
             className="flex-1 bg-transparent outline-none text-gray-700 placeholder-gray-400 px-4"
+            value={task}
+            onChange={(e) => setTask(e.target.value)}
           />
           <button
             type="button"
@@ -23,7 +40,7 @@ const Todo = () => {
           >
             Add Task
           </button>
-        </div>
+        </form>
 
         {/* Task List */}
         <ul className="mt-6 space-y-2 text-gray-800">
